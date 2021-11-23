@@ -1,12 +1,12 @@
 <template>
   <nav>
-    <router-link to="/">HOME</router-link>
+    <router-link to="/" class='link'>HOME</router-link>
     <div class='links'>
-      <router-link to="/favs">FAVS</router-link>
-      <router-link to="/mygifos">MY GIFOS</router-link>
-      <router-link to="/creategifo">CREATE</router-link>
+      <router-link to="/favs" class='link'>FAVS</router-link>
+      <router-link to="/mygifos" class='link'>MY GIFOS</router-link>
+      <router-link to="/creategifo" class='link'>CREATE</router-link>
       <i
-        class="fas fa-adjust"
+        class="fas fa-adjust link"
         @click.prevent='setDarkMode'
         :class='darkMode === false ? "dark" : "light"'>
       </i>
@@ -31,27 +31,31 @@ export default {
 </script>
 
 <style lang="scss">
+@import './src/assets/_variables.scss';
+
 nav {
+  border-top: 5px solid $colorOne;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
   font-weight: 700;
+  color: $colorOne;
+  .link {
+    margin-left: 20px;
+    transition: 0.2s;
+  }
+  .link:hover {
+    cursor: pointer;
+    color: $colorTwo;
+    transform: scale(1.1);
+  }
   .links {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 30%;
-  }
-  .links * {
-    margin-left: 20px;
-    transition: 0.2s;
-  }
-  .links *:hover {
-    cursor: pointer;
-    color: #572ee5;
-    transform: scale(1.1);
   }
   .fas {
     transition: 0.2s;
