@@ -1,10 +1,10 @@
 <template>
   <nav>
-    <router-link to="/"><img src='../assets/home.svg' alt='home' /></router-link>
+    <router-link to="/">HOME</router-link>
     <div class='links'>
       <router-link to="/favs">FAVS</router-link>
       <router-link to="/mygifos">MY GIFOS</router-link>
-      <router-link to="/creategifo">+</router-link>
+      <router-link to="/creategifo">CREATE</router-link>
       <i
         class="fas fa-adjust"
         @click.prevent='setDarkMode'
@@ -46,10 +46,12 @@ nav {
   }
   .links * {
     margin-left: 20px;
+    transition: 0.2s;
   }
   .links *:hover {
     cursor: pointer;
     color: #572ee5;
+    transform: scale(1.1);
   }
   .fas {
     transition: 0.2s;
