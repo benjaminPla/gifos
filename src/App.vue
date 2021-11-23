@@ -1,30 +1,14 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/"><img src='./assets/home.svg' alt='home' /></router-link>
+    <router-link to="/favs">FAVS</router-link>
+    <router-link to="/mygifos">MY GIFOS</router-link>
+    <router-link to="/creategifo">+</router-link>
+    <i class="fas fa-adjust"></i>
   </div>
   <router-view/>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
