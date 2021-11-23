@@ -1,14 +1,18 @@
 <template>
-  <div id="nav">
-    <router-link to="/"><img src='./assets/home.svg' alt='home' /></router-link>
-    <router-link to="/favs">FAVS</router-link>
-    <router-link to="/mygifos">MY GIFOS</router-link>
-    <router-link to="/creategifo">+</router-link>
-    <i class="fas fa-adjust"></i>
-  </div>
+  <nav-bar />
   <router-view/>
 </template>
 
-<style lang="scss">
+<script>
+import NavBar from '@/components/NavBar.vue';
 
+export default {
+  name: 'App',
+  components: { NavBar },
+};
+</script>
+
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Roboto:wght@300;700&display=swap');
+@import './src/assets/_variables.scss';
 </style>
