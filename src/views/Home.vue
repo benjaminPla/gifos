@@ -35,6 +35,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0 5%;
   h1 {
     color: $colorOne;
     font-size: 3rem;

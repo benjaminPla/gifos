@@ -34,6 +34,10 @@ export default {
 @import './src/assets/_variables.scss';
 
 nav {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  background: #fff;
   border-top: 5px solid $colorOne;
   font-family: 'Montserrat', sans-serif;
   display: flex;
