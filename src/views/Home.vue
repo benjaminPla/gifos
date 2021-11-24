@@ -24,8 +24,8 @@ export default {
   setup() {
     const store = useStore();
     const searchValue = ref('');
-    const gifos = computed(() => store.state.gifos);
-    const searchGifo = () => store.dispatch('getGifos', searchValue._value);
+    const gifos = computed(() => store.state.searchGifos);
+    const searchGifo = () => store.dispatch('getSearchGifos', searchValue.value);
     return { searchValue, searchGifo, gifos };
   },
 };
@@ -35,11 +35,11 @@ export default {
 @import './src/assets/_variables.scss';
 
 .view {
+  padding-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0 5%;
   h1 {
     color: $colorOne;
     font-size: 3rem;

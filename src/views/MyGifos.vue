@@ -6,6 +6,7 @@
 
 <style scoped lang='scss'>
   .view {
+    padding-top: 80px;
     height: 100vh;
   }
 </style>

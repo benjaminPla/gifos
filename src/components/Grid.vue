@@ -17,20 +17,19 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import '../assets/_variables.scss';
-
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  margin: 20px 0;
+  margin: 20px 10%;
   .gifo {
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid $colorOne;
+    width: 200px;
+    height: 200px;
     img {
-      width: 200px;
-      height: 200px;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
   }

@@ -1,13 +1,15 @@
 <template>
   <nav-bar />
+  <trendings />
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue';
+import Trendings from '@/components/Trendings.vue';
 
 export default {
   name: 'App',
-  components: { NavBar },
+  components: { NavBar, Trendings },
 };
 </script>
 
