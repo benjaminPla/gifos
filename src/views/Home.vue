@@ -3,13 +3,18 @@
     <h1>GIFOS</h1>
     <h2>Get inspired, search, save, and create<br>the best <span>GIFOS</span></h2>
     <img src='../assets/main-img.svg' alt='main-img'>
-    <input type='search' placeholder='Search GIFO' @search.prevent='searchGifo'/>
+    <input
+      type='search'
+      placeholder='Search GIFO'
+      v-model='searchValue'
+      @search.prevent='searchGifo'
+    />
     <grid :gifos='gifos' />
   </div>
 </template>
 
 <script>
-import { computed, onMounted } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import Grid from '../components/Grid.vue';
 
@@ -18,11 +23,10 @@ export default {
   components: { Grid },
   setup() {
     const store = useStore();
+    const searchValue = ref('');
     const gifos = computed(() => store.state.gifos);
-    onMounted(() => {
-      store.dispatch('getGifos');
-    });
-    return { gifos };
+    const searchGifo = () => store.dispatch('getGifos', searchValue._value);
+    return { searchValue, searchGifo, gifos };
   },
 };
 </script>
