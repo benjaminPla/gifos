@@ -3,9 +3,29 @@
     <h1>GIFOS</h1>
     <h2>Get inspired, search, save, and create<br>the best <span>GIFOS</span></h2>
     <img src='../assets/main-img.svg' alt='main-img'>
-    <input type='search' placeholder='Search GIFO' />
+    <input type='search' placeholder='Search GIFO' @search.prevent='searchGifo'/>
+    <grid :gifos='gifos' />
   </div>
 </template>
+
+<script>
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+import Grid from '../components/Grid.vue';
+
+export default {
+  name: 'Home',
+  components: { Grid },
+  setup() {
+    const store = useStore();
+    const gifos = computed(() => store.state.gifos);
+    onMounted(() => {
+      store.dispatch('getGifos');
+    });
+    return { gifos };
+  },
+};
+</script>
 
 <style scoped lang='scss'>
 @import './src/assets/_variables.scss';
