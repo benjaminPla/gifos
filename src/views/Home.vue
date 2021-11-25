@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import './src/assets/_variables.scss';
+@import './src/assets/variables';
 
 .view {
   padding-top: 80px;

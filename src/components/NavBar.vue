@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import './src/assets/_variables.scss';
+@import './src/assets/variables';
 
 nav {
   position: fixed;
@@ -48,12 +48,6 @@ nav {
   color: $colorOne;
   .link {
     margin-left: 20px;
-    transition: 0.2s;
-  }
-  .link:hover {
-    cursor: pointer;
-    color: $colorTwo;
-    transform: scale(1.1);
   }
   .links {
     display: flex;

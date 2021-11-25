@@ -1,12 +1,12 @@
 <template>
   <div class='trendings'>
     <i
-      class="fas fa-angle-double-left"
+      class="fas fa-angle-double-left link"
       @click.prevent='setOffset("previous")'
       :class='offset <= 0 && "disable"'>
     </i>
     <grid :gifos='gifos'/>
-    <i class="fas fa-angle-double-right" @click.prevent='setOffset("next")'></i>
+    <i class="fas fa-angle-double-right link" @click.prevent='setOffset("next")'></i>
   </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import '../assets/_variables.scss';
+@import '../assets/variables';
 
 .trendings {
   background-color: #f3f5f8;
@@ -42,7 +42,6 @@ export default {
   align-items: center;
   .fas {
     font-size: 3rem;
-    font-family: "Font Awesome 5 Free";
     color: $colorOne;
     cursor: pointer;
   }
