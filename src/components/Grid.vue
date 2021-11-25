@@ -6,17 +6,31 @@
       <!-- <span>{{ gif.user.username }}</span> -->
     </div>
   </div>
+  <input
+    type='button'
+    value='View More'
+    @click.prevent='viewMore'
+    :class='!displayButton && "display"'/>
 </template>
 
 <script>
+import { useStore } from 'vuex';
 
 export default {
   name: 'Grid',
   props: ['gifos'],
+  setup() {
+    const store = useStore();
+    const displayButton = true;
+    const viewMore = () => store.dispatch('setSearchGifosOffset');
+    return { viewMore, displayButton };
+  },
 };
 </script>
 
 <style scoped lang='scss'>
+@import '../assets/variables';
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

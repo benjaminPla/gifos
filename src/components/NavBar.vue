@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import { useStore } from 'vuex';
 import { computed } from 'vue';
+import { useStore } from 'vuex';
 
 export default {
   name: 'NavBar',

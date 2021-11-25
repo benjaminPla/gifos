@@ -14,6 +14,9 @@ a:active {
   text-decoration: none;
   color: inherit;
 }
+.display {
+  display: none;
+}
 .link {
   transition: 0.2s;
   color: $colorOne;
