@@ -21,7 +21,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-  margin: 20px 10%;
+  margin: 20px;
   .gifo {
     border-radius: 10px;
     overflow: hidden;

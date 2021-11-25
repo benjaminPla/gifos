@@ -1,6 +1,8 @@
 <template>
   <div class='trendings'>
+    <i class="fas fa-angle-double-left" @click.prevent='setOffset("previous")'></i>
     <grid :gifos='gifos'/>
+    <i class="fas fa-angle-double-right" @click.prevent='setOffset("next")'></i>
   </div>
 </template>
 
@@ -15,10 +17,11 @@ export default {
   setup() {
     const store = useStore();
     const gifos = computed(() => store.state.trendingsGifos);
+    const setOffset = (type) => store.dispatch('setTrendingsOffset', type);
     onMounted(() => {
       store.dispatch('getTrendingsGifos');
     });
-    return { gifos };
+    return { gifos, setOffset };
   },
 };
 </script>
@@ -29,5 +32,14 @@ export default {
 .trendings {
   background-color: #f3f5f8;
   padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .fas {
+    font-size: 3rem;
+    font-family: "Font Awesome 5 Free";
+    color: $colorOne;
+    cursor: pointer;
+  }
 }
 </style>
