@@ -1,6 +1,10 @@
 <template>
   <div class='trendings'>
-    <i class="fas fa-angle-double-left" @click.prevent='setOffset("previous")'></i>
+    <i
+      class="fas fa-angle-double-left"
+      @click.prevent='setOffset("previous")'
+      :class='offset <= 0 && "disable"'>
+    </i>
     <grid :gifos='gifos'/>
     <i class="fas fa-angle-double-right" @click.prevent='setOffset("next")'></i>
   </div>
@@ -17,11 +21,12 @@ export default {
   setup() {
     const store = useStore();
     const gifos = computed(() => store.state.trendingsGifos);
+    const offset = computed(() => store.state.trendingsOffset);
     const setOffset = (type) => store.dispatch('setTrendingsOffset', type);
     onMounted(() => {
       store.dispatch('getTrendingsGifos');
     });
-    return { gifos, setOffset };
+    return { gifos, offset, setOffset };
   },
 };
 </script>
@@ -40,6 +45,10 @@ export default {
     font-family: "Font Awesome 5 Free";
     color: $colorOne;
     cursor: pointer;
+  }
+  .disable {
+    cursor: not-allowed;
+    color: #000;
   }
 }
 </style>
