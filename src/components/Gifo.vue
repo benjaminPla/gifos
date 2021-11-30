@@ -3,15 +3,9 @@
     <img :src="data.images.fixed_width.url" :alt="data.title">
     <div class='hover'>
       <div>
-        <button class='link'>
-          <img src='../assets/btn-gif-expand.svg' alt='expand'/>
-        </button>
-        <button class='link'>
-          <img src='../assets/btn-gif-favs.svg' alt='favs'/>
-        </button>
-        <button class='link'>
-          <img src='../assets/btn-gif-download.svg' alt='download'/>
-        </button>
+        <expand-btn class='btn' />
+        <favs-btn class='btn' />
+        <download-btn class='btn' />
       </div>
       <h4>{{ data.title }}</h4>
     </div>
@@ -19,8 +13,13 @@
 </template>
 
 <script>
+import ExpandBtn from './ExpandBtn.vue';
+import FavsBtn from './FavsBtn.vue';
+import DownloadBtn from './DownloadBtn.vue';
+
 export default {
   name: 'Gifo',
+  components: { ExpandBtn, FavsBtn, DownloadBtn },
   props: ['data'],
 };
 </script>
@@ -57,13 +56,12 @@ export default {
     opacity: 0.8;
     text-align: right;
   }
-  button {
+  .btn {
     cursor: pointer;
-    outline: none;
     border-radius: 10px;
-    border: none;
+    max-height: 40px;
+    max-width: 40px;
     margin-left: 5px;
-    height: 40px;
   }
   h4 {
     text-align: left;
