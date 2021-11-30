@@ -12,7 +12,7 @@ export default createStore({
 
     myGifos: [],
 
-    favsGifos: [],
+    favsGifos: JSON.parse(localStorage.getItem('favs')) || [],
 
     darkMode: false,
   },
@@ -26,6 +26,8 @@ export default createStore({
 
     setTrendingsGifos: (state, payload) => state.trendingsGifos = payload,
     setTrendingsOffset: (state, payload) => state.trendingsOffset += payload,
+
+    setFavsGifos: (state, payload) => state.favsGifos.push(payload),
 
     setDarkMode: (state) => state.darkMode = !state.darkMode
     /* eslint-disable */

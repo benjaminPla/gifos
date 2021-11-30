@@ -1,11 +1,11 @@
 <template>
   <div class='gifo'>
-    <img :src="data.images.fixed_width.url" :alt="data.title">
+    <img :src="data.images.fixed_width.url" :alt="data.title" />
     <div class='hover'>
-      <div>
-        <expand-btn class='btn' />
-        <favs-btn class='btn' />
-        <download-btn class='btn' />
+      <div class='btns'>
+        <expand-btn />
+        <favs-btn :data='data.id' />
+        <download-btn />
       </div>
       <h4>{{ data.title }}</h4>
     </div>
@@ -56,7 +56,7 @@ export default {
     opacity: 0.8;
     text-align: right;
   }
-  .btn {
+  .btns * {
     cursor: pointer;
     border-radius: 10px;
     max-height: 40px;
