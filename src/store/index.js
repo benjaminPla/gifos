@@ -12,8 +12,6 @@ export default createStore({
 
     myGifos: [],
 
-    favsGifos: JSON.parse(localStorage.getItem('favs')) || [],
-
     darkMode: false,
   },
   mutations: {
@@ -26,8 +24,6 @@ export default createStore({
 
     setTrendingsGifos: (state, payload) => state.trendingsGifos = payload,
     setTrendingsOffset: (state, payload) => state.trendingsOffset += payload,
-
-    setFavsGifos: (state, payload) => state.favsGifos.push(payload),
 
     setDarkMode: (state) => state.darkMode = !state.darkMode
     /* eslint-disable */
@@ -71,5 +67,15 @@ export default createStore({
       type === 'next' ? commit('setTrendingsOffset', 4) : commit('setTrendingsOffset', -4);
       dispatch('getTrendingsGifos');
     },
+    // getFavsGifos({ state, commit }, favGifos) {
+    //   favGifos.map(gifo => {
+    //     const endpoint = 'https://api.giphy.com/v1/gifs/'
+    //     +`${gifo}?api_key=${process.env.VUE_APP_API_KEY}`
+    //     const gifos = fetch(endpoint)
+    //     then(data => data.json())
+    //     .catch(error => console.log(error));
+    //     commit('setFavsGifos');
+    //   });
+    // },
   },
 });
