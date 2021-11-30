@@ -3,17 +3,26 @@ import { createStore } from 'vuex';
 export default createStore({
   state: {
     searchGifos: [],
+    searchedGifosValue: '',
     searchGifosOffset: 0,
+    displayViewMoreBtn: false,
 
     trendingsGifos: [],
     trendingsOffset: 0,
+
+    myGifos: [],
+
+    favsGifos: [],
 
     darkMode: false,
   },
   mutations: {
     /* eslint-disable */
     setSearchGifos: (state, payload) => state.searchGifos = payload,
+    setSearchedGifosValue: (state, payload) => state.searchedGifosValue = payload,
     setSearchGifosOffset: (state, payload) => state.searchGifosOffset += payload,
+    resetSearchGifosOffset: (state) => state.searchGifosOffset = 0,
+    toggleViewMoreBtn: (state) => state.displayViewMoreBtn = true,
 
     setTrendingsGifos: (state, payload) => state.trendingsGifos = payload,
     setTrendingsOffset: (state, payload) => state.trendingsOffset += payload,
@@ -22,22 +31,35 @@ export default createStore({
     /* eslint-disable */
   },
   actions: {
-    async getSearchGifos({ state, commit }, value) {
-      const offset = state.searchGifosOffset;
-      const endpoint = `https://api.giphy.com/v1/gifs/search?api_key=${process.env.VUE_APP_API_KEY}`;
-      const gifos = await fetch(`${endpoint}&q=${value}&offset=${state.searchGifosOffset}&limit=12`)
+    searchGifos({ state, commit, dispatch }, value) {
+      if (value !== state.searchGifosValue) {
+        commit('setSearchedGifosValue', value);
+        commit('resetSearchGifosOffset');
+      };
+      commit('toggleViewMoreBtn');
+      dispatch('getSearchGifos');
+    },
+    async getSearchGifos({ state, commit }) {
+      const endpoint = 'https://api.giphy.com/v1/gifs/search'
+        +`?api_key=${process.env.VUE_APP_API_KEY}`
+        +`&q=${state.searchedGifosValue}`
+        +`&offset=${state.searchGifosOffset}`
+        +'&limit=12';
+      const gifos = await fetch(endpoint)
         .then(data => data.json())
         .catch(error => console.log(error));
       commit('setSearchGifos', gifos.data);
     },
-    setSearchGifosOffset({ commit, dispatch }) {
+    setSearchGifosOffset({ state, commit, dispatch }) {
       commit('setSearchGifosOffset', 12);
-      dispatch('getSearchGifos', 'hola');
+      dispatch('getSearchGifos');
     },
-    async getTrendingsGifos({ commit, state }) {
-      const offset = state.trendingsOffset;
-      const endpoint = `https://api.giphy.com/v1/gifs/trending?api_key=${process.env.VUE_APP_API_KEY}`;
-      const gifos = await fetch(`${endpoint}&offset=${offset}&limit=4`)
+    async getTrendingsGifos({ state, commit }) {
+      const endpoint = 'https://api.giphy.com/v1/gifs/trending'
+        +`?api_key=${process.env.VUE_APP_API_KEY}`
+        +`&offset=${state.trendingsOffset}`
+        +'&limit=4';
+      const gifos = await fetch(endpoint)
         .then(data => data.json())
         .catch(error => console.log(error));
       commit('setTrendingsGifos', gifos.data);

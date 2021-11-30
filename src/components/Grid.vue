@@ -6,11 +6,6 @@
       <!-- <span>{{ gif.user.username }}</span> -->
     </div>
   </div>
-  <input
-    type='button'
-    value='View More'
-    @click.prevent='viewMore'
-    :class='!displayButton && "display"'/>
 </template>
 
 <script>
@@ -47,5 +42,14 @@ export default {
       object-fit: cover;
     }
   }
+}
+input[type='button'] {
+  background: $colorOne;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: 700;
 }
 </style>

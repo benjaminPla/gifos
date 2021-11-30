@@ -5,11 +5,9 @@
       <router-link to="/favs" class='link'>FAVS</router-link>
       <router-link to="/mygifos" class='link'>MY GIFOS</router-link>
       <router-link to="/creategifo" class='link'>CREATE</router-link>
-      <i
-        class="fas fa-adjust link"
-        @click.prevent='setDarkMode'
-        :class='darkMode === false ? "dark" : "light"'>
-      </i>
+      <a>
+        <i class="fas fa-adjust link" @click.prevent='setDarkMode'></i>
+      </a>
     </div>
   </nav>
   <router-view/>
@@ -58,7 +56,7 @@ nav {
   .fas {
     transition: 0.2s;
   }
-  .dark {
+  a .fas:active {
     transform: rotate(180deg);
   }
 }
