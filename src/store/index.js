@@ -36,7 +36,7 @@ export default createStore({
         commit('setSearchedGifosValue', value);
         commit('resetSearchGifosOffset');
       };
-      commit('toggleViewMoreBtn');
+      !state.displayViewMoreBtn && commit('toggleViewMoreBtn');
       dispatch('getSearchGifos');
     },
     async getSearchGifos({ state, commit }) {

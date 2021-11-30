@@ -1,25 +1,16 @@
 <template>
   <div class='grid'>
-    <div v-for='gif in gifos' :key='gif.id' class='gifo'>
-      <img :src="gif.images.fixed_width.url" :alt="gif.title">
-      <!-- <h4>{{ gif.title }}</h4> -->
-      <!-- <span>{{ gif.user.username }}</span> -->
-    </div>
+    <gifo v-for='gif in gifos' :key='gif.id' :data='gif' />
   </div>
 </template>
 
 <script>
-import { useStore } from 'vuex';
+import Gifo from './Gifo.vue';
 
 export default {
   name: 'Grid',
+  components: { Gifo },
   props: ['gifos'],
-  setup() {
-    const store = useStore();
-    const displayButton = true;
-    const viewMore = () => store.dispatch('setSearchGifosOffset');
-    return { viewMore, displayButton };
-  },
 };
 </script>
 
@@ -31,25 +22,5 @@ export default {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   margin: 20px;
-  .gifo {
-    border-radius: 10px;
-    overflow: hidden;
-    width: 200px;
-    height: 200px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-}
-input[type='button'] {
-  background: $colorOne;
-  outline: none;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 20px;
-  color: #fff;
-  font-weight: 700;
 }
 </style>
