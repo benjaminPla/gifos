@@ -10,7 +10,6 @@
       </a>
     </div>
   </nav>
-  <router-view/>
 </template>
 
 <script>

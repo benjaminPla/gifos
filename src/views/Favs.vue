@@ -1,6 +1,6 @@
 <template>
   <div class="view">
-    <grid :gifos='favsGifos'/>
+    <grid :gifos='gifos' />
   </div>
 </template>
 
@@ -14,18 +14,11 @@ export default {
   components: { Grid },
   setup() {
     const store = useStore();
-    const favsGifos = computed(() => store.state.favsGifos);
+    const gifos = computed(() => store.state.favsGifos);
     onMounted(() => {
-      store.dispatch('getFavsGifos', favsGifos);
+      store.dispatch('getFavsGifos');
     });
-    return { favsGifos };
+    return { gifos };
   },
 };
 </script>
-
-<style scoped lang='scss'>
-  .view {
-    padding-top: 80px;
-    height: 100vh;
-  }
-</style>

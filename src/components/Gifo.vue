@@ -1,13 +1,13 @@
 <template>
   <div class='gifo'>
-    <img :src="data.images.fixed_width.url" :alt="data.title" />
+    <img :src="gifo.images.fixed_width.url" :alt="gifo.title" />
     <div class='hover'>
       <div class='btns'>
         <expand-btn />
-        <favs-btn :data='data.id' />
+        <favs-btn :gifoId='gifo.id' />
         <download-btn />
       </div>
-      <h4>{{ data.title }}</h4>
+      <h4>{{ gifo.title }}</h4>
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@ import DownloadBtn from './DownloadBtn.vue';
 export default {
   name: 'Gifo',
   components: { ExpandBtn, FavsBtn, DownloadBtn },
-  props: ['data'],
+  props: ['gifo'],
 };
 </script>
 

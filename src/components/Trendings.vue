@@ -5,7 +5,7 @@
       @click.prevent='setOffset("previous")'
       :class='offset <= 0 && "disable"'>
     </i>
-    <grid :gifos='gifos'/>
+    <grid :gifos='gifos' />
     <i class="fas fa-angle-double-right link" @click.prevent='setOffset("next")'></i>
   </div>
 </template>

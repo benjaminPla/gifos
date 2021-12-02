@@ -28,7 +28,7 @@ export default createStore({
     setTrendingsGifos: (state, payload) => state.trendingsGifos = payload,
     setTrendingsOffset: (state, payload) => state.trendingsOffset += payload,
 
-    setFavsGifos: (state, payload) => state.favsGifos.push(payload),
+    setFavsGifos: (state, payload) => state.favsGifos = payload,
 
     setDarkMode: (state) => state.darkMode = !state.darkMode
     /* eslint-disable */
@@ -72,15 +72,23 @@ export default createStore({
       type === 'next' ? commit('setTrendingsOffset', 4) : commit('setTrendingsOffset', -4);
       dispatch('getTrendingsGifos');
     },
-    async getFavsGifos({ state, commit }) {
-      await state.favsGifosIds.map(async (id) => {
-        const endpoint = 'https://api.giphy.com/v1/gifs/'
-        +`${id}?api_key=${process.env.VUE_APP_API_KEY}`;
-        const gifo = await fetch(endpoint)
-          .then(data => data.json())
-          .catch(error => console.log(error));
-        commit('setFavsGifos', gifo.data);
-      });
+    getFavsGifos({ state, commit }) {
+      if (state.favsGifosIds.length === 0) {
+        return;
+      } else {
+        const gifos = [];
+        state.favsGifosIds.forEach(async (id) => {
+          const endpoint = 'https://api.giphy.com/v1/gifs/'
+          +`${id}?api_key=${process.env.VUE_APP_API_KEY}`;
+
+          const gifo = await fetch(endpoint)
+            .then(data => data.json())
+            .catch(error => console.log(error));
+
+          gifos.push(gifo.data);
+        });
+      commit('setFavsGifos', gifos);
+      };
     },
   },
 });

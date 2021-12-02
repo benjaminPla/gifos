@@ -1,6 +1,6 @@
 <template>
   <div class='grid'>
-    <gifo v-for='gif in gifos' :key='gif.id' :data='gif' />
+    <gifo v-for='gifo in gifos' :key='gifo.id' :gifo='gifo' />
   </div>
 </template>
 

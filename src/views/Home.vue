@@ -30,27 +30,20 @@ export default {
 <style scoped lang='scss'>
 @import './src/assets/variables';
 
-.view {
-  padding-top: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  h1 {
-    color: $colorOne;
-    font-size: 3rem;
+h1 {
+  color: $colorOne;
+  font-size: 3rem;
+}
+h2 {
+  color: $colorOne;
+  text-align: center;
+  font-size: 2rem;
+  margin: 10px 0;
+  span {
+    color: $colorTwo;
   }
-  h2 {
-    color: $colorOne;
-    text-align: center;
-    font-size: 2rem;
-    margin: 10px 0;
-    span {
-      color: $colorTwo;
-    }
-  }
-  img {
-    width: 40%;
-  }
+}
+img {
+  width: 40%;
 }
 </style>

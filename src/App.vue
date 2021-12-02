@@ -1,5 +1,6 @@
 <template>
   <nav-bar />
+  <router-view />
   <trendings />
   <footer-bar />
 </template>

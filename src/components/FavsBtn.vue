@@ -3,20 +3,20 @@
     src='../assets/btn-gif-favs.svg'
     alt='favs'
     class='link'
-    @click.prevent='setFavsGifos(data)'
+    @click.prevent='setFavsGifos(gifoId)'
   />
 </template>
 
 <script>
 export default {
   name: 'FavsBtn',
-  props: ['data'],
+  props: ['gifoId'],
   setup() {
     /* eslint-disable */
-    const setFavsGifos = (id) => {
+    const setFavsGifos = (gifoId) => {
       const favsGifos = JSON.parse(localStorage.getItem('favsGifos')) || [];
-      if (!favsGifos.includes(id)) {
-        favsGifos.push(id);
+      if (!favsGifos.includes(gifoId)) {
+        favsGifos.push(gifoId);
         localStorage.setItem('favsGifos', JSON.stringify(favsGifos));
       };
     };
