@@ -7,6 +7,9 @@
       <a href='https://www.linkedin.com/in/benjamin-pla/' target='_blank' class='link'>
         <i class='fab fa-linkedin'></i>
       </a>
+      <a href='https://benjaminpla.github.io/cv/' target='_blank' class='link'>
+        <i class="far fa-id-badge"></i>
+      </a>
     </div>
     <p><i class="fab fa-vuejs"></i> Project made using Vue + Vuex technologies</p>
     <p>Consuming
