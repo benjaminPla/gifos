@@ -72,12 +72,13 @@ export default createStore({
       type === 'next' ? commit('setTrendingsOffset', 4) : commit('setTrendingsOffset', -4);
       dispatch('getTrendingsGifos');
     },
-    getFavsGifos({ state, commit }) {
+    async getFavsGifos({ state, commit }) {
       if (state.favsGifosIds.length === 0) {
         return;
       } else {
         const gifos = [];
-        state.favsGifosIds.forEach(async (id) => {
+
+        await Promise.all(state.favsGifosIds.map(async (id) => {
           const endpoint = 'https://api.giphy.com/v1/gifs/'
           +`${id}?api_key=${process.env.VUE_APP_API_KEY}`;
 
@@ -86,7 +87,8 @@ export default createStore({
             .catch(error => console.log(error));
 
           gifos.push(gifo.data);
-        });
+        }));
+
       commit('setFavsGifos', gifos);
       };
     },
